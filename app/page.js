@@ -1,7 +1,7 @@
 "use client";
-// Main screen. One client component: pick photo -> compress -> /api/explain -> show cards.
+// Main screen. One client component: pick photo -> quality check -> compress -> /api/explain -> show cards.
 import { useState, useRef, useEffect } from "react";
-import { compressImage, buildSpeechText, buildShareUrl, pickVoice } from "../lib/helpers";
+import { compressImage, checkPhotoQuality, buildSpeechText, buildShareUrl, pickVoice } from "../lib/helpers";
 
 const SAMPLES = [
   { id: "scheme", label: "योजना सूचना", src: "/samples/scheme.svg" },
@@ -13,6 +13,11 @@ const CONF = {
   High: { cls: "bg-leaf text-white", text: "खात्री: जास्त" },
   Medium: { cls: "bg-orange-500 text-white", text: "खात्री: मध्यम" },
   Low: { cls: "bg-red-600 text-white", text: "खात्री: कमी" },
+};
+// Marathi messages shown when the photo quality check finds a problem.
+const QUALITY_MSG = {
+  dark: "फोटो खूप अंधारी आहे. जास्त प्रकाशात पुन्हा काढा.",
+  blur: "फोटो धूसर (blur) आहे. कॅमेरा स्थिर धरून पुन्हा काढा.",
 };
 
 // A reusable result card: coloured left border + icon + Marathi title.
@@ -35,26 +40,34 @@ export default function Home() {
   const [demoFallback, setDemoFallback] = useState(false);
   const [speaking, setSpeaking] = useState(false);
   const [voiceMsg, setVoiceMsg] = useState("");
+  const [qualityIssue, setQualityIssue] = useState(null); // "dark" | "blur" | null
   const fileRef = useRef(null);
+  const latestUrl = useRef(null); // remembers the newest photo so an old check cannot overwrite it
 
   // Voices load late on some phones; touching getVoices() early helps.
   useEffect(() => { window.speechSynthesis?.getVoices(); return () => window.speechSynthesis?.cancel(); }, []);
 
   function resetOutput() { setResult(null); setError(""); setDemoFallback(false); stopSpeaking(); }
 
-  function onFile(e) {
+  async function onFile(e) {
     const file = e.target.files?.[0];
     if (!file) return;
+    e.target.value = ""; // lets the user pick the same file again after retaking
     const url = URL.createObjectURL(file);
-    resetOutput(); setPreview(url); setSource({ src: url, sampleId: null });
+    latestUrl.current = url;
+    resetOutput(); setQualityIssue(null); setPreview(url); setSource({ src: url, sampleId: null });
+    // Check the photo in the browser. Nothing is sent to the server here.
+    const q = await checkPhotoQuality(url);
+    if (latestUrl.current === url) setQualityIssue(q.issue);
   }
   function onSample(s) {
-    resetOutput(); setPreview(s.src); setSource({ src: s.src, sampleId: s.id });
+    latestUrl.current = s.src;
+    resetOutput(); setQualityIssue(null); setPreview(s.src); setSource({ src: s.src, sampleId: s.id });
   }
 
   async function explain() {
     if (!source) return;
-    resetOutput(); setLoading(true);
+    resetOutput(); setQualityIssue(null); setLoading(true);
     try {
       const img = await compressImage(source.src);
       const res = await fetch("/api/explain", {
@@ -88,6 +101,14 @@ export default function Home() {
   function stopSpeaking() { window.speechSynthesis?.cancel(); setSpeaking(false); }
 
   const conf = result ? CONF[result.confidence] || CONF.Low : null;
+
+  // The model keeps every list empty when the paper is not a farm / government / bank document.
+  // In that case the photo is fine, so we must NOT tell the farmer "photo is blurry".
+  const notFarmDoc = result
+    ? !result.what_you_must_do.length && !result.documents_needed.length &&
+      !result.important_dates.length && !result.red_flags.length
+    : false;
+  const isLow = result ? (CONF[result.confidence] ? result.confidence === "Low" : true) : false;
 
   return (
     <main className="max-w-xl mx-auto pb-10">
@@ -130,6 +151,20 @@ export default function Home() {
           <div className="space-y-3">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src={preview} alt="निवडलेला कागद" className="w-full max-h-80 object-contain rounded-xl border bg-white" />
+
+            {/* Photo quality warning: shown only when the browser check finds a problem */}
+            {qualityIssue && (
+              <div role="alert" className="bg-orange-50 border-2 border-orange-400 rounded-xl p-4 space-y-3">
+                <p className="text-lg font-bold text-orange-900">⚠️ {QUALITY_MSG[qualityIssue]}</p>
+                <div className="flex gap-2 flex-wrap">
+                  <button onClick={() => fileRef.current?.click()}
+                    className="flex-1 bg-leaf text-white font-bold rounded-lg px-4 py-2">📷 पुन्हा फोटो काढा</button>
+                  <button onClick={() => setQualityIssue(null)}
+                    className="flex-1 border-2 border-gray-400 bg-white font-bold rounded-lg px-4 py-2">तरीही समजावून सांगा</button>
+                </div>
+              </div>
+            )}
+
             <button onClick={explain} disabled={loading}
               className="w-full bg-saffron text-black text-2xl font-bold rounded-xl py-4 shadow disabled:opacity-60">
               {loading ? "वाचत आहे..." : "समजावून सांगा (Explain)"}
@@ -159,8 +194,20 @@ export default function Home() {
               <span className={`${conf.cls} rounded-full px-4 py-1 font-bold`}>{conf.text}</span>
               {demoFallback && <span className="bg-gray-700 text-white rounded-full px-3 py-1 text-sm">Demo fallback</span>}
             </div>
-            {result.confidence === "Low" && (
+
+            {/* Low confidence: show the right reason, not always "photo is blurry" */}
+            {notFarmDoc && (
+              <p className="bg-blue-50 border border-blue-300 text-blue-900 font-bold rounded-lg p-3">
+                हा कागद शेती, सरकारी किंवा बँकेचा दिसत नाही. कृपया योजना सूचना, मृदा आरोग्य पत्रिका किंवा बँक पत्र यांचा फोटो वापरा.
+              </p>
+            )}
+            {!notFarmDoc && isLow && result.unclear_parts.length > 0 && (
               <p className="bg-red-100 text-red-800 font-bold rounded-lg p-3">फोटो अस्पष्ट आहे, पुन्हा काढा</p>
+            )}
+            {!notFarmDoc && isLow && result.unclear_parts.length === 0 && (
+              <p className="bg-orange-100 text-orange-900 font-bold rounded-lg p-3">
+                या कागदाबद्दल खात्री कमी आहे. कृपया तालुका कृषी कार्यालय / बँकेत तपासा.
+              </p>
             )}
 
             <Card icon="📄" title="हे काय आहे">
