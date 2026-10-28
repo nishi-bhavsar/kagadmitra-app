@@ -1,0 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body { background: #FFF9EC; color: #1f2a1f; }
+/* Visible keyboard focus for accessibility */
+button:focus-visible, select:focus-visible, label:focus-within { outline: 3px solid #2E7D32; outline-offset: 2px; }
+/* Simple loading skeleton pulse (respects reduced motion) */
+@media (prefers-reduced-motion: no-preference) { .skeleton { animation: pulse 1.4s ease-in-out infinite; } }
+@keyframes pulse { 50% { opacity: .45; } }

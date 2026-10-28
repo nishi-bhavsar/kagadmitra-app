@@ -1,0 +1,266 @@
+{
+ "scheme": {
+  "mr": {
+   "document_type": "ठिबक सिंचन अनुदान योजनेची सूचना",
+   "one_line_summary": "ठिबक सिंचनासाठी अनुदान मिळवण्यास तुम्ही पात्र आहात; ३० नोव्हेंबर २०२६ पर्यंत अर्ज द्यावा लागेल.",
+   "what_you_must_do": [
+    "तालुका कृषी कार्यालयात जा.",
+    "अर्जाचा फॉर्म भरा.",
+    "३० नोव्हेंबर २०२६ पूर्वी अर्ज जमा करा."
+   ],
+   "documents_needed": [
+    "७/१२ उतारा",
+    "८अ उतारा",
+    "आधार कार्डची प्रत",
+    "बँक पासबुकची प्रत",
+    "२ फोटो"
+   ],
+   "important_dates": [
+    {
+     "label": "अर्जाची शेवटची तारीख",
+     "date": "३० नोव्हेंबर २०२६"
+    }
+   ],
+   "red_flags": [
+    "शेवटच्या तारखेनंतर आलेले अर्ज घेतले जाणार नाहीत.",
+    "अनुदान शेतात तपासणी झाल्यानंतरच मिळते."
+   ],
+   "confidence": "High",
+   "unclear_parts": []
+  },
+  "hi": {
+   "document_type": "ड्रिप सिंचाई सब्सिडी योजना का नोटिस",
+   "one_line_summary": "आप ड्रिप सिंचाई की सब्सिडी के लिए पात्र हैं; 30 नवंबर 2026 तक आवेदन देना है।",
+   "what_you_must_do": [
+    "तालुका कृषि कार्यालय जाएँ।",
+    "आवेदन फॉर्म भरें।",
+    "30 नवंबर 2026 से पहले जमा करें।"
+   ],
+   "documents_needed": [
+    "7/12 उतारा",
+    "8अ उतारा",
+    "आधार कार्ड की कॉपी",
+    "बैंक पासबुक की कॉपी",
+    "2 फोटो"
+   ],
+   "important_dates": [
+    {
+     "label": "आवेदन की आखिरी तारीख",
+     "date": "30 नवंबर 2026"
+    }
+   ],
+   "red_flags": [
+    "आखिरी तारीख के बाद के आवेदन नहीं लिए जाएँगे।",
+    "सब्सिडी खेत की जाँच के बाद ही मिलेगी।"
+   ],
+   "confidence": "High",
+   "unclear_parts": []
+  },
+  "en": {
+   "document_type": "Drip irrigation subsidy scheme notice",
+   "one_line_summary": "You can apply for a drip irrigation subsidy; the form must be submitted by 30 November 2026.",
+   "what_you_must_do": [
+    "Go to the Taluka Agriculture Office.",
+    "Fill the application form.",
+    "Submit it before 30 November 2026."
+   ],
+   "documents_needed": [
+    "7/12 extract",
+    "8A extract",
+    "Aadhaar copy",
+    "Bank passbook copy",
+    "2 photographs"
+   ],
+   "important_dates": [
+    {
+     "label": "Last date to apply",
+     "date": "30 November 2026"
+    }
+   ],
+   "red_flags": [
+    "Late applications will not be considered.",
+    "Subsidy is paid only after field inspection."
+   ],
+   "confidence": "High",
+   "unclear_parts": []
+  }
+ },
+ "soil": {
+  "mr": {
+   "document_type": "मृदा आरोग्य पत्रिका (Soil Health Card)",
+   "one_line_summary": "तुमची जमीन क्षारयुक्त आहे; नत्र कमी आणि झिंक कमी आहे.",
+   "what_you_must_do": [
+    "शेणखत वापरा.",
+    "झिंक सल्फेट कृषी केंद्राच्या सल्ल्याने द्या.",
+    "पालाश खत कमी करा.",
+    "२ वर्षांनी माती पुन्हा तपासा."
+   ],
+   "documents_needed": [],
+   "important_dates": [
+    {
+     "label": "माती नमुना तारीख",
+     "date": "१२ सप्टेंबर २०२६"
+    }
+   ],
+   "red_flags": [
+    "pH ८.६ आहे, म्हणजे जमीन क्षारयुक्त आहे.",
+    "सेंद्रिय कर्ब कमी (०.३०%) आहे."
+   ],
+   "confidence": "High",
+   "unclear_parts": [
+    "खताचे नेमके प्रमाण कागदावर दिलेले नाही; कृषी केंद्रात विचारा."
+   ]
+  },
+  "hi": {
+   "document_type": "मृदा स्वास्थ्य कार्ड (Soil Health Card)",
+   "one_line_summary": "आपकी मिट्टी क्षारीय है; नाइट्रोजन कम और जिंक की कमी है।",
+   "what_you_must_do": [
+    "गोबर की खाद डालें।",
+    "जिंक सल्फेट कृषि केंद्र की सलाह से दें।",
+    "पोटाश खाद कम करें।",
+    "2 साल बाद मिट्टी फिर जाँचें।"
+   ],
+   "documents_needed": [],
+   "important_dates": [
+    {
+     "label": "मिट्टी नमूने की तारीख",
+     "date": "12 सितंबर 2026"
+    }
+   ],
+   "red_flags": [
+    "pH 8.6 है, यानी मिट्टी क्षारीय है।",
+    "जैविक कार्बन कम (0.30%) है।"
+   ],
+   "confidence": "High",
+   "unclear_parts": [
+    "खाद की सही मात्रा कार्ड पर नहीं लिखी है; कृषि केंद्र से पूछें।"
+   ]
+  },
+  "en": {
+   "document_type": "Soil Health Card",
+   "one_line_summary": "Your soil is alkaline, low in nitrogen and zinc.",
+   "what_you_must_do": [
+    "Add farmyard manure.",
+    "Apply zinc sulphate as advised by Krishi Kendra.",
+    "Reduce potash fertiliser.",
+    "Test the soil again after 2 years."
+   ],
+   "documents_needed": [],
+   "important_dates": [
+    {
+     "label": "Soil sample date",
+     "date": "12 September 2026"
+    }
+   ],
+   "red_flags": [
+    "pH is 8.6, which means alkaline soil.",
+    "Organic carbon is low (0.30%)."
+   ],
+   "confidence": "High",
+   "unclear_parts": [
+    "Exact fertiliser quantity is not written; ask the Krishi Kendra."
+   ]
+  }
+ },
+ "bank": {
+  "mr": {
+   "document_type": "बँकेचे कर्ज हप्ता थकबाकी स्मरणपत्र",
+   "one_line_summary": "तुमचा १८,५०० रुपयांचा हप्ता १५ ऑक्टोबरपासून थकला आहे; १० नोव्हेंबर २०२६ पर्यंत भरा.",
+   "what_you_must_do": [
+    "१० नोव्हेंबर २०२६ पूर्वी बँक शाखेत जा.",
+    "पासबुक आणि ओळखपत्र सोबत न्या.",
+    "हप्ता थेट बँकेत भरा."
+   ],
+   "documents_needed": [
+    "बँक पासबुक",
+    "ओळखपत्र"
+   ],
+   "important_dates": [
+    {
+     "label": "हप्ता थकल्याची तारीख",
+     "date": "१५ ऑक्टोबर २०२६"
+    },
+    {
+     "label": "भरण्याची शेवटची तारीख",
+     "date": "१० नोव्हेंबर २०२६"
+    }
+   ],
+   "red_flags": [
+    "दरमहा २% दंडव्याज लागू शकते.",
+    "कागदावर एजंटला ५०० रुपये आधी UPI ने पाठवायला सांगितले आहे; हे संशयास्पद आहे.",
+    "OTP सांगायला सांगितले आहे; OTP कोणालाही देऊ नका.",
+    "पैसे भरण्यापूर्वी बँकेत प्रत्यक्ष जाऊन खात्री करा."
+   ],
+   "confidence": "Medium",
+   "unclear_parts": [
+    "एजंट कोण आहे हे कागदावरून स्पष्ट नाही."
+   ]
+  },
+  "hi": {
+   "document_type": "बैंक लोन किस्त बकाया का रिमाइंडर",
+   "one_line_summary": "आपकी 18,500 रुपये की किस्त 15 अक्टूबर से बकाया है; 10 नवंबर 2026 तक भरें।",
+   "what_you_must_do": [
+    "10 नवंबर 2026 से पहले बैंक शाखा जाएँ।",
+    "पासबुक और पहचान पत्र साथ ले जाएँ।",
+    "किस्त सीधे बैंक में भरें।"
+   ],
+   "documents_needed": [
+    "बैंक पासबुक",
+    "पहचान पत्र"
+   ],
+   "important_dates": [
+    {
+     "label": "किस्त बकाया होने की तारीख",
+     "date": "15 अक्टूबर 2026"
+    },
+    {
+     "label": "भुगतान की आखिरी तारीख",
+     "date": "10 नवंबर 2026"
+    }
+   ],
+   "red_flags": [
+    "हर महीने 2% दंड ब्याज लग सकता है।",
+    "पत्र में एजेंट को 500 रुपये पहले UPI से भेजने को कहा है; यह संदिग्ध है।",
+    "OTP माँगा गया है; OTP किसी को न दें।",
+    "पैसे देने से पहले बैंक जाकर पक्का करें।"
+   ],
+   "confidence": "Medium",
+   "unclear_parts": [
+    "एजेंट कौन है, यह पत्र से साफ नहीं है।"
+   ]
+  },
+  "en": {
+   "document_type": "Bank loan overdue reminder",
+   "one_line_summary": "Your Rs 18,500 instalment is overdue since 15 October; pay by 10 November 2026.",
+   "what_you_must_do": [
+    "Visit the bank branch before 10 November 2026.",
+    "Carry your passbook and ID.",
+    "Pay the instalment directly at the bank."
+   ],
+   "documents_needed": [
+    "Bank passbook",
+    "ID proof"
+   ],
+   "important_dates": [
+    {
+     "label": "Overdue since",
+     "date": "15 October 2026"
+    },
+    {
+     "label": "Last date to pay",
+     "date": "10 November 2026"
+    }
+   ],
+   "red_flags": [
+    "Penal interest of 2% per month may apply.",
+    "The letter asks for Rs 500 in advance to an agent by UPI; this looks suspicious.",
+    "It asks for an OTP; never share an OTP with anyone.",
+    "Confirm at the bank in person before paying anyone."
+   ],
+   "confidence": "Medium",
+   "unclear_parts": [
+    "It is not clear from the letter who the agent is."
+   ]
+  }
+ }
+}
